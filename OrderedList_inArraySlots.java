@@ -8,9 +8,13 @@
 
 public class OrderedList_inArraySlots
     implements OrderedList {
-
+    private int cost;
     private java.util.ArrayList<Integer> list_iAS;
 
+    //Finds the cost
+    public int cost() {
+        return cost;
+    }
 
     /**
       @return the index of any occurrence of
@@ -18,6 +22,7 @@ public class OrderedList_inArraySlots
               \findMe is absent from this list.
      */
     public int indexOf( Integer findMe) {
+        cost = 0;
         return indexOf_whileStyle( findMe);
         // return indexOf_recursive(
             // findMe, 0, list_iAS.size() -1);
@@ -32,6 +37,7 @@ public class OrderedList_inArraySlots
         int hi  = list_iAS.size() -1;  // inclusive
 
         while( low <= hi){
+            cost++;
             int pageToCheck = (low + hi) / 2;
             int comparison =
               findMe.compareTo( list_iAS.get( pageToCheck));
@@ -56,6 +62,7 @@ public class OrderedList_inArraySlots
                                  , int low
                                  , int hi // inclusive
                                  ) {
+        cost++;
         // System.out.println( "debug low: " + low
                           // + "   hi: " + hi);
         if( low > hi)  // detect base case
